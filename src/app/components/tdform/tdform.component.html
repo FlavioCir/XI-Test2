@@ -1,0 +1,49 @@
+<div class="container mt-3">
+    <h1 class="text-center">TD from hero</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form (ngSubmit)="submit(form)" #form="ngForm">
+                    <div ngModelGroup="userInfo" id="userInfo" #userGroup="ngModelGroup">
+                        <div class="form-group mb-3">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" [ngModel]="heroForm.name" name="name" class="form-control"
+                                required #name="ngModel">
+                            <p *ngIf="name.invalid && name.touched" class="bg-danger bg-opacity-50 p-3 rounded mt-2 text-danger fw-bolder border border-danger">Campo obbligatorio</p>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="alterEgo">Alter Ego</label>
+                            <input type="alterEgo" id="alterEgo" name="alterEgo" [ngModel]="heroForm.alterEgo" required
+                                class="form-control" #alterEgo="ngModel">
+                            <p *ngIf="alterEgo.invalid && alterEgo.touched" class="bg-danger bg-opacity-50 p-3 rounded mt-2 text-danger fw-bolder border border-danger">Campo obbligatorio</p>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="power">Super Potere</label>
+                            <select name="power" id="power" class="form-select" [ngModel]="heroForm.power">
+                                <option value="forza">Super forza</option>
+                                <option value="velocità">Super velocità</option>
+                                <option value="volo">Capacità di volare</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="enemy">Nemico</label>
+                            <input type="text" id="enemy" [ngModel]="heroForm.enemy" name="enemy" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="planet">Pianeta</label>
+                            <input type="text" id="planet" [ngModel]="heroForm.planet" name="planet"
+                                class="form-control" #planet="ngModel" required minlength="5">
+                            <p *ngIf="planet.invalid && planet.touched" class="bg-danger bg-opacity-50 p-3 rounded mt-2 text-danger fw-bolder border border-danger">Campo {{ planet.value.length }} carattere, deve essere minimo 5 caratteri</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="weakness">Debolezza</label>
+                            <input type="text" id="weakness" [ngModel]="heroForm.weakness" name="weakness"
+                                class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3" [disabled]="form.invalid">Invia</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
